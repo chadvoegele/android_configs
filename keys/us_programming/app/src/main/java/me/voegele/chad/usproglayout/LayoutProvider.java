@@ -1,4 +1,4 @@
-package dev.chad.usproglayout;
+package me.voegele.chad.usproglayout;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

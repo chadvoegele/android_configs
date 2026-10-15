@@ -134,6 +134,12 @@ assert "ctrl: fallback LANGUAGE_SWITCH" in raw
 
 # Verify the package's discovery metadata and APK resource when built.
 ns = '{http://schemas.android.com/apk/res/android}'
+package = 'me.voegele.chad.usproglayout'
+gradle = (ROOT / 'app/build.gradle').read_text()
+assert f"namespace '{package}'" in gradle
+assert f"applicationId '{package}'" in gradle
+provider = ROOT / 'app/src/main/java' / package.replace('.', '/') / 'LayoutProvider.java'
+assert f'package {package};' in provider.read_text()
 manifest = ET.parse(ROOT / 'app/src/main/AndroidManifest.xml').getroot()
 assert manifest.find('.//service') is None, 'This must not register an IME'
 receiver = manifest.find('.//receiver')

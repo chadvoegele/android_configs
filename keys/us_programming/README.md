@@ -4,17 +4,24 @@ A physical keyboard layout package for Android 8.0+ and USB/Bluetooth keyboards.
 Keep Gboard (or your usual IME) selected. No root, permissions, network access,
 typing service, or input logging. There is no launcher activity.
 
-Package ID: `dev.chad.usproglayout`. Layout ID: `us_prog_terminal`.
-These legacy Android identifiers are retained for seamless installed updates;
-all project and resource names use US Programming.
+Package ID: `me.voegele.chad.usproglayout`. Layout ID: `us_prog_terminal`.
+The layout ID is retained; project and resource names use US Programming.
 The only included KCM is `app/src/main/res/raw/us_programming.kcm`.
 
 ## Install
 
-Install `us-programming-debug.apk` as an update to the existing package:
+Install `us-programming-debug.apk`:
 
 ```sh
 adb install -r us-programming-debug.apk
+```
+
+If migrating from `dev.chad.usproglayout`, this is a separate app, not an
+in-place update. Select the new app's layout, then uninstall the old package
+to remove duplicate choices. To open the old package's app details:
+
+```sh
+adb shell am start -a android.settings.APPLICATION_DETAILS_SETTINGS -d package:dev.chad.usproglayout
 ```
 
 Select **US Programming** under Settings → Physical keyboard → your keyboard's
