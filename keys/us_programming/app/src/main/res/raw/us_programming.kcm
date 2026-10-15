@@ -1,0 +1,643 @@
+# US Programming physical keyboard layout.
+# Both Alt keys select level 3. Undefined level 4 is explicitly none.
+# Later properties take precedence: keep combined modifiers last.
+# Ctrl+semicolon -> native Escape; Ctrl+period -> U+E000 via a spare key code.
+# Other Ctrl/Meta combinations retain the original layout behavior.
+type OVERLAY
+
+# Report physical left Alt as right Alt / AltGr before modifier tracking.
+# Standard Linux evdev KEY_LEFTALT and USB HID Keyboard Left Alt usage.
+map key 56 ALT_RIGHT
+map key usage 0x000700e2 ALT_RIGHT
+
+# Keep Alt+Space usable while holding the programming layer.
+# Preserve Android's default Meta/Ctrl Space fallback actions.
+key SPACE {
+    label: ' '
+    base: ' '
+    alt: ' '
+    meta: fallback SEARCH
+    ctrl: fallback LANGUAGE_SWITCH
+}
+
+# XKB TLDE
+key GRAVE {
+    label: '`'
+    base: '`'
+    shift: '~'
+    capslock: '`'
+    shift+capslock: '~'
+    alt: '`'
+    alt+shift: '~'
+    alt+capslock: '`'
+    alt+shift+capslock: '~'
+}
+
+# XKB AE01
+key 1 {
+    label: '1'
+    base: '1'
+    shift: '!'
+    capslock: '1'
+    shift+capslock: '!'
+    alt: '1'
+    alt+shift: '!'
+    alt+capslock: '1'
+    alt+shift+capslock: '!'
+}
+
+# XKB AE02
+key 2 {
+    label: '2'
+    base: '2'
+    shift: '@'
+    capslock: '2'
+    shift+capslock: '@'
+    alt: '2'
+    alt+shift: '@'
+    alt+capslock: '2'
+    alt+shift+capslock: '@'
+}
+
+# XKB AE03
+key 3 {
+    label: '3'
+    base: '3'
+    shift: '#'
+    capslock: '3'
+    shift+capslock: '#'
+    alt: '3'
+    alt+shift: '#'
+    alt+capslock: '3'
+    alt+shift+capslock: '#'
+}
+
+# XKB AE04
+key 4 {
+    label: '4'
+    base: '4'
+    shift: '$'
+    capslock: '4'
+    shift+capslock: '$'
+    alt: '4'
+    alt+shift: '$'
+    alt+capslock: '4'
+    alt+shift+capslock: '$'
+}
+
+# XKB AE05
+key 5 {
+    label: '5'
+    base: '5'
+    shift: '%'
+    capslock: '5'
+    shift+capslock: '%'
+    alt: '5'
+    alt+shift: '%'
+    alt+capslock: '5'
+    alt+shift+capslock: '%'
+}
+
+# XKB AE06
+key 6 {
+    label: '6'
+    base: '6'
+    shift: '^'
+    capslock: '6'
+    shift+capslock: '^'
+    alt: '6'
+    alt+shift: '^'
+    alt+capslock: '6'
+    alt+shift+capslock: '^'
+}
+
+# XKB AE07
+key 7 {
+    label: '7'
+    base: '7'
+    shift: '&'
+    capslock: '7'
+    shift+capslock: '&'
+    alt: '7'
+    alt+shift: '&'
+    alt+capslock: '7'
+    alt+shift+capslock: '&'
+}
+
+# XKB AE08
+key 8 {
+    label: '8'
+    base: '8'
+    shift: '*'
+    capslock: '8'
+    shift+capslock: '*'
+    alt: '8'
+    alt+shift: '*'
+    alt+capslock: '8'
+    alt+shift+capslock: '*'
+}
+
+# XKB AE09
+key 9 {
+    label: '9'
+    base: '9'
+    shift: '('
+    capslock: '9'
+    shift+capslock: '('
+    alt: '9'
+    alt+shift: '('
+    alt+capslock: '9'
+    alt+shift+capslock: '('
+}
+
+# XKB AE10
+key 0 {
+    label: '0'
+    base: '0'
+    shift: ')'
+    capslock: '0'
+    shift+capslock: ')'
+    alt: '0'
+    alt+shift: ')'
+    alt+capslock: '0'
+    alt+shift+capslock: ')'
+}
+
+# XKB AE11
+key MINUS {
+    label: '-'
+    base: '-'
+    shift: '_'
+    capslock: '-'
+    shift+capslock: '_'
+    alt: '-'
+    alt+shift: '_'
+    alt+capslock: '-'
+    alt+shift+capslock: '_'
+}
+
+# XKB AE12
+key EQUALS {
+    label: '='
+    base: '='
+    shift: '+'
+    capslock: '='
+    shift+capslock: '+'
+    alt: '='
+    alt+shift: '+'
+    alt+capslock: '='
+    alt+shift+capslock: '+'
+}
+
+# XKB AD01
+key Q {
+    label: 'Q'
+    base: 'q'
+    shift: 'Q'
+    capslock: 'Q'
+    shift+capslock: 'q'
+    alt: 'q'
+    alt+shift: 'Q'
+    alt+capslock: 'Q'
+    alt+shift+capslock: 'q'
+}
+
+# XKB AD02
+key W {
+    label: 'W'
+    base: 'w'
+    shift: 'W'
+    capslock: 'W'
+    shift+capslock: 'w'
+    alt: '~'
+    alt+shift: none
+    alt+capslock: '~'
+    alt+shift+capslock: none
+}
+
+# XKB AD03
+key E {
+    label: 'E'
+    base: 'e'
+    shift: 'E'
+    capslock: 'E'
+    shift+capslock: 'e'
+    alt: '\\'
+    alt+shift: none
+    alt+capslock: '\\'
+    alt+shift+capslock: none
+}
+
+# XKB AD04
+key R {
+    label: 'R'
+    base: 'r'
+    shift: 'R'
+    capslock: 'R'
+    shift+capslock: 'r'
+    alt: '{'
+    alt+shift: none
+    alt+capslock: '{'
+    alt+shift+capslock: none
+}
+
+# XKB AD05
+key T {
+    label: 'T'
+    base: 't'
+    shift: 'T'
+    capslock: 'T'
+    shift+capslock: 't'
+    alt: '}'
+    alt+shift: none
+    alt+capslock: '}'
+    alt+shift+capslock: none
+}
+
+# XKB AD06
+key Y {
+    label: 'Y'
+    base: 'y'
+    shift: 'Y'
+    capslock: 'Y'
+    shift+capslock: 'y'
+    alt: '#'
+    alt+shift: none
+    alt+capslock: '#'
+    alt+shift+capslock: none
+}
+
+# XKB AD07
+key U {
+    label: 'U'
+    base: 'u'
+    shift: 'U'
+    capslock: 'U'
+    shift+capslock: 'u'
+    alt: '7'
+    alt+shift: none
+    alt+capslock: '7'
+    alt+shift+capslock: none
+}
+
+# XKB AD08
+key I {
+    label: 'I'
+    base: 'i'
+    shift: 'I'
+    capslock: 'I'
+    shift+capslock: 'i'
+    alt: '8'
+    alt+shift: none
+    alt+capslock: '8'
+    alt+shift+capslock: none
+}
+
+# XKB AD09
+key O {
+    label: 'O'
+    base: 'o'
+    shift: 'O'
+    capslock: 'O'
+    shift+capslock: 'o'
+    alt: '9'
+    alt+shift: none
+    alt+capslock: '9'
+    alt+shift+capslock: none
+}
+
+# XKB AD10
+key P {
+    label: 'P'
+    base: 'p'
+    shift: 'P'
+    capslock: 'P'
+    shift+capslock: 'p'
+    alt: '*'
+    alt+shift: none
+    alt+capslock: '*'
+    alt+shift+capslock: none
+}
+
+# XKB AD11
+key LEFT_BRACKET {
+    label: '['
+    base: '['
+    shift: '{'
+    capslock: '['
+    shift+capslock: '{'
+    alt: '/'
+    alt+shift: none
+    alt+capslock: '/'
+    alt+shift+capslock: none
+}
+
+# XKB AD12
+key RIGHT_BRACKET {
+    label: ']'
+    base: ']'
+    shift: '}'
+    capslock: ']'
+    shift+capslock: '}'
+    alt: '`'
+    alt+shift: none
+    alt+capslock: '`'
+    alt+shift+capslock: none
+}
+
+# XKB AC01
+key A {
+    label: 'A'
+    base: 'a'
+    shift: 'A'
+    capslock: 'A'
+    shift+capslock: 'a'
+    alt: '('
+    alt+shift: none
+    alt+capslock: '('
+    alt+shift+capslock: none
+}
+
+# XKB AC02
+key S {
+    label: 'S'
+    base: 's'
+    shift: 'S'
+    capslock: 'S'
+    shift+capslock: 's'
+    alt: ')'
+    alt+shift: none
+    alt+capslock: ')'
+    alt+shift+capslock: none
+}
+
+# XKB AC03
+key D {
+    label: 'D'
+    base: 'd'
+    shift: 'D'
+    capslock: 'D'
+    shift+capslock: 'd'
+    alt: '='
+    alt+shift: none
+    alt+capslock: '='
+    alt+shift+capslock: none
+}
+
+# XKB AC04
+key F {
+    label: 'F'
+    base: 'f'
+    shift: 'F'
+    capslock: 'F'
+    shift+capslock: 'f'
+    alt: '_'
+    alt+shift: none
+    alt+capslock: '_'
+    alt+shift+capslock: none
+}
+
+# XKB AC05
+key G {
+    label: 'G'
+    base: 'g'
+    shift: 'G'
+    capslock: 'G'
+    shift+capslock: 'g'
+    alt: '&'
+    alt+shift: none
+    alt+capslock: '&'
+    alt+shift+capslock: none
+}
+
+# XKB AC06
+key H {
+    label: 'H'
+    base: 'h'
+    shift: 'H'
+    capslock: 'H'
+    shift+capslock: 'h'
+    alt: '+'
+    alt+shift: none
+    alt+capslock: '+'
+    alt+shift+capslock: none
+}
+
+# XKB AC07
+key J {
+    label: 'J'
+    base: 'j'
+    shift: 'J'
+    capslock: 'J'
+    shift+capslock: 'j'
+    alt: '4'
+    alt+shift: none
+    alt+capslock: '4'
+    alt+shift+capslock: none
+}
+
+# XKB AC08
+key K {
+    label: 'K'
+    base: 'k'
+    shift: 'K'
+    capslock: 'K'
+    shift+capslock: 'k'
+    alt: '5'
+    alt+shift: '%'
+    alt+capslock: '5'
+    alt+shift+capslock: '%'
+}
+
+# XKB AC09
+key L {
+    label: 'L'
+    base: 'l'
+    shift: 'L'
+    capslock: 'L'
+    shift+capslock: 'l'
+    alt: '6'
+    alt+shift: '^'
+    alt+capslock: '6'
+    alt+shift+capslock: '^'
+}
+
+# XKB AC10
+key SEMICOLON {
+    label: ';'
+    base: ';'
+    shift: ':'
+    capslock: ';'
+    shift+capslock: ':'
+    alt: '-'
+    alt+shift: none
+    alt+capslock: '-'
+    alt+shift+capslock: none
+    ctrl: replace ESCAPE
+    ctrl+shift: none
+}
+
+# XKB AC11
+key APOSTROPHE {
+    label: '\''
+    base: '\''
+    shift: '"'
+    capslock: '\''
+    shift+capslock: '"'
+    alt: ','
+    alt+shift: none
+    alt+capslock: ','
+    alt+shift+capslock: none
+}
+
+# XKB AB01
+key Z {
+    label: 'Z'
+    base: 'z'
+    shift: 'Z'
+    capslock: 'Z'
+    shift+capslock: 'z'
+    alt: '['
+    alt+shift: none
+    alt+capslock: '['
+    alt+shift+capslock: none
+}
+
+# XKB AB02
+key X {
+    label: 'X'
+    base: 'x'
+    shift: 'X'
+    capslock: 'X'
+    shift+capslock: 'x'
+    alt: ']'
+    alt+shift: none
+    alt+capslock: ']'
+    alt+shift+capslock: none
+}
+
+# XKB AB03
+key C {
+    label: 'C'
+    base: 'c'
+    shift: 'C'
+    capslock: 'C'
+    shift+capslock: 'c'
+    alt: '$'
+    alt+shift: none
+    alt+capslock: '$'
+    alt+shift+capslock: none
+}
+
+# XKB AB04
+key V {
+    label: 'V'
+    base: 'v'
+    shift: 'V'
+    capslock: 'V'
+    shift+capslock: 'v'
+    alt: '|'
+    alt+shift: none
+    alt+capslock: '|'
+    alt+shift+capslock: none
+}
+
+# XKB AB05
+key B {
+    label: 'B'
+    base: 'b'
+    shift: 'B'
+    capslock: 'B'
+    shift+capslock: 'b'
+    alt: '!'
+    alt+shift: none
+    alt+capslock: '!'
+    alt+shift+capslock: none
+}
+
+# XKB AB06
+key N {
+    label: 'N'
+    base: 'n'
+    shift: 'N'
+    capslock: 'N'
+    shift+capslock: 'n'
+    alt: '0'
+    alt+shift: none
+    alt+capslock: '0'
+    alt+shift+capslock: none
+}
+
+# XKB AB07
+key M {
+    label: 'M'
+    base: 'm'
+    shift: 'M'
+    capslock: 'M'
+    shift+capslock: 'm'
+    alt: '1'
+    alt+shift: none
+    alt+capslock: '1'
+    alt+shift+capslock: none
+}
+
+# XKB AB08
+key COMMA {
+    label: ','
+    base: ','
+    shift: '<'
+    capslock: ','
+    shift+capslock: '<'
+    alt: '2'
+    alt+shift: '@'
+    alt+capslock: '2'
+    alt+shift+capslock: '@'
+}
+
+# XKB AB09
+key PERIOD {
+    label: '.'
+    base: '.'
+    shift: '>'
+    capslock: '.'
+    shift+capslock: '>'
+    alt: '3'
+    alt+shift: '#'
+    alt+capslock: '3'
+    alt+shift+capslock: '#'
+    ctrl: replace BUTTON_16
+    ctrl+shift: none
+}
+
+# XKB AB10
+key SLASH {
+    label: '/'
+    base: '/'
+    shift: '?'
+    capslock: '/'
+    shift+capslock: '?'
+    alt: '.'
+    alt+shift: none
+    alt+capslock: '.'
+    alt+shift+capslock: none
+}
+
+# XKB BKSL
+key BACKSLASH {
+    label: '\\'
+    base: '\\'
+    shift: '|'
+    capslock: '\\'
+    shift+capslock: '|'
+    alt: '\\'
+    alt+shift: '|'
+    alt+capslock: '\\'
+    alt+shift+capslock: '|'
+}
+
+# Synthetic destination for Ctrl+period; no physical keys are mapped here.
+# A printable private-use character bypasses terminal Ctrl-byte conversion.
+key BUTTON_16 {
+    label: none
+    base: '\ue000'
+}
