@@ -4,9 +4,7 @@ A physical keyboard layout package for Android 8.0+ and USB/Bluetooth keyboards.
 Keep Gboard (or your usual IME) selected. No root, permissions, network access,
 typing service, or input logging. There is no launcher activity.
 
-Package ID: `me.voegele.chad.usproglayout`. Layout ID: `us_prog_terminal`.
-The layout ID is retained; project and resource names use US Programming.
-The only included KCM is `app/src/main/res/raw/us_programming.kcm`.
+Package ID: `me.voegele.chad.usproglayout`.
 
 ## Install
 
@@ -16,44 +14,58 @@ Install `us-programming-debug.apk`:
 adb install -r us-programming-debug.apk
 ```
 
-If migrating from `dev.chad.usproglayout`, this is a separate app, not an
-in-place update. Select the new app's layout, then uninstall the old package
-to remove duplicate choices. To open the old package's app details:
-
-```sh
-adb shell am start -a android.settings.APPLICATION_DETAILS_SETTINGS -d package:dev.chad.usproglayout
-```
-
 Select **US Programming** under Settings → Physical keyboard → your keyboard's
 layout settings. Settings names vary by device. Reopen Settings or reconnect the
-keyboard if the layout list has not refreshed. The old experimental layouts are
-no longer included.
+keyboard if the layout list has not refreshed.
 
 To undo, choose the ordinary English (US) physical layout, then uninstall this
 package if desired.
 
 ## Mapping
 
-Normal and Shift typing use US QWERTY. Both Alt keys select the programming layer;
-physical left Alt is reported as right Alt/AltGr. Caps Lock affects normal letters,
-not programming symbols.
+Each view shows the characters produced at the same physical key positions.
+`·` means no character. Space inserts a space in all four views.
+
+### No modifiers
 
 ```text
-Alt:
-  w ~    e \\    r {    t }    y #    u 7    i 8    o 9    p *
-  [ /    ] `
-  a (    s )    d =    f _    g &    h +    j 4    k 5    l 6
-  ; -    ' ,
-  z [    x ]    c $    v |    b !    n 0    m 1    , 2    . 3    / .
-
-Shift+Alt:
-  k %    l ^    , @    . #
+`  1  2  3  4  5  6  7  8  9  0  -  =
+   q  w  e  r  t  y  u  i  o  p  [  ]  \
+    a  s  d  f  g  h  j  k  l  ;  '
+     z  x  c  v  b  n  m  ,  .  /
 ```
 
-Other three-level keys have no fourth-level character, matching the original layout. Two-level keys retain their normal/Shift
-characters with Alt held. Alt+Space inserts a space.
+### Shift
 
-Terminal shortcuts:
+```text
+~  !  @  #  $  %  ^  &  *  (  )  _  +
+   Q  W  E  R  T  Y  U  I  O  P  {  }  |
+    A  S  D  F  G  H  J  K  L  :  "
+     Z  X  C  V  B  N  M  <  >  ?
+```
+
+### Alt
+
+```text
+`  1  2  3  4  5  6  7  8  9  0  -  =
+   q  ~  \  {  }  #  7  8  9  *  /  `  \
+    (  )  =  _  &  +  4  5  6  -  ,
+     [  ]  $  |  !  0  1  2  3  .
+```
+
+### Shift+Alt
+
+```text
+~  !  @  #  $  %  ^  &  *  (  )  _  +
+   Q  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  |
+    ·  ·  ·  ·  ·  ·  ·  %  ^  ·  ·
+     ·  ·  ·  ·  ·  ·  ·  @  #  ·
+```
+
+Both Alt keys select the programming layer; physical left Alt is reported as
+right Alt/AltGr. Caps Lock affects normal letters, not programming symbols.
+
+### Terminal shortcuts
 
 - **Ctrl+; → native Escape**.
 - **Ctrl+. → U+E000**, via a spare `BUTTON_16` key that consumes Ctrl.
@@ -70,16 +82,16 @@ Outside configured apps, Ctrl+. may insert a private-use glyph.
 ## Limitations
 
 Android-reserved shortcuts and apps handling raw key events can take precedence.
-Left Alt no longer acts as terminal Meta. Avoid holding both Alt keys at once:
-they share one logical modifier, so releasing either may clear its state.
+Left Alt acts as AltGr rather than terminal Meta. Avoid holding both Alt keys at
+once: they share one logical modifier, so releasing either may clear its state.
 Unusual keyboards may need different scan/usage mappings.
 
 The layout overlays the device's existing key map. Enter, Tab, Backspace,
 navigation, function keys, and numpad keys are not redefined. Ctrl+Space and
 Meta+Space preserve Android's language-switch/Search fallback actions.
 
-The user verified the US Programming update on their device. Automated tests
-are desktop models, not Android native-parser/runtime tests.
+The layout has been tested on an Android device. Automated tests are desktop
+models, not Android native-parser/runtime tests.
 
 ## Build and test
 
@@ -95,20 +107,5 @@ cp app/build/outputs/apk/debug/app-debug.apk us-programming-debug.apk
 ```
 
 Tests require Python 3. They check ordinary character behavior against explicit
-expectations, model terminal shortcut actions, and
-check discovery metadata and the built APK's KCM resources.
-
-Temporary build tools on this machine:
-
-```sh
-JAVA_HOME=/tmp/us-prog-jdk ANDROID_HOME=/tmp/us-prog-android-sdk \
-  ./gradlew --no-daemon assembleDebug lintDebug
-```
-
-## Source files
-
-- `app/src/main/res/raw/us_programming.kcm`: the active character map.
-- `app/src/main/res/xml/keyboard_layouts.xml`: layout discovery.
-- `app/src/main/res/xml-v34/keyboard_layouts.xml`: Android 14+ metadata.
-- `app/src/main/AndroidManifest.xml`: physical-layout provider declaration.
-- `tests/`: character mapping, shortcut, and package checks.
+expectations, model terminal shortcut actions, and check discovery metadata and
+the built APK's KCM resources.
